@@ -23,8 +23,8 @@ class DogBloc extends Bloc<DogEvent, DogState> {
   }
 
   final DogRepository _dogRepository;
-  Dogs _dogs = Dogs(dogTypes: {'': []});
-  Dogs get dogs => _dogs;
+  List<Dog> _dogs = [];
+  List<Dog> get dogs => _dogs;
 
   Future<void> _getDogs(DogEvent event, Emitter<DogState> emit) async {
     try {

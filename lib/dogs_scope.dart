@@ -19,11 +19,7 @@ class DogsScope extends StatefulWidget {
 
 class DogsScopeState extends State<DogsScope> {
   final DogRepository _dogRepository = DogRepository(
-    dio: Dio(
-      BaseOptions(
-        headers: {'User-Agent': DogDio.userAgent},
-      ),
-    ),
+    dio: Dio(BaseOptions(headers: {'User-Agent': DogDio.userAgent})),
     baseUrl: DogConfigs.baseUrl,
   );
 
@@ -32,9 +28,7 @@ class DogsScopeState extends State<DogsScope> {
     return RepositoryProvider(
       create: (context) => _dogRepository,
       child: BlocProvider<DogBloc>(
-        create: (context) => DogBloc(
-          dogRepository: _dogRepository,
-        ),
+        create: (context) => DogBloc(dogRepository: _dogRepository),
         child: widget.child,
       ),
     );

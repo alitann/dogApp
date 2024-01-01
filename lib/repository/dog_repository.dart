@@ -19,7 +19,7 @@ class DogRepository {
   final DogClient _dogClient;
   Directory? localDirectory;
 
-  Future<Dogs> getDogs() async {
+  Future<List<Dog>> getDogs() async {
     try {
       final dogResponseResult = await _dogClient.getDogs();
 
@@ -38,10 +38,10 @@ class DogRepository {
     }
   }
 
-  Future<void> getDogImagesAndSave({required Dogs dogs}) async {
+  Future<void> getDogImagesAndSave({required List<Dog> dogs}) async {
     try {
-      for (final dog in dogs.dogTypes.keys) {
-        final dogImageResult = await _dogClient.getDogImage(dogType: dog);
+      for (final dog in dogs) {
+        final dogImageResult = await _dogClient.getDogImage(dogType: dog.breed);
         final response = await http.get(Uri.parse(dogImageResult.message));
 
         if (response.statusCode == 200) {

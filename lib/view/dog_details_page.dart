@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dog_app/gen/assets.gen.dart';
+import 'package:dog_app/repository/models/dogs.dart';
 import 'package:dog_app/state/bloc/dog_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,14 +11,12 @@ import 'package:svg_flutter/svg_flutter.dart';
 class DogDetailsPage extends StatelessWidget {
   const DogDetailsPage({
     required this.localPath,
-    required this.subbreed,
-    required this.breed,
+    required this.dog,
     super.key,
   });
 
-  final List<String?> subbreed;
+  final Dog dog;
   final String localPath;
-  final String breed;
 
   Future<void> showNewImage(BuildContext context, String imageUrl) {
     return showDialog<void>(
@@ -80,17 +79,17 @@ class DogDetailsPage extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            _DogImage(localPath: localPath, dogName: breed),
+            _DogImage(localPath: localPath, dogName: dog.breed),
             const _TitleText(title: 'Breed'),
             const _Divider(),
-            _SubtitleText(title: breed),
-            if (subbreed.isNotEmpty) ...[
+            _SubtitleText(title: dog.breed),
+            if (dog.subbreed.isNotEmpty) ...[
               const _TitleText(title: 'Sub Breed'),
               const _Divider(),
-              ...subbreed.map((e) => _SubtitleText(title: e!)),
+              ...dog.subbreed.map((e) => _SubtitleText(title: e!)),
             ],
             const SizedBox(height: 16),
-            _GenerateButton(breed),
+            _GenerateButton(dog.breed),
             const SizedBox(height: 16),
           ],
         ),

@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         }
       },
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Dog App Demo',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(
@@ -49,9 +49,7 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Galano Grotesque',
           useMaterial3: true,
         ),
-        home: const DogsScope(
-          child: DogsPage(),
-        ),
+        home: const DogsScope(child: DogsPage()),
       ),
     );
   }

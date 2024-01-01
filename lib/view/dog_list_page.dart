@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dog_app/gen/assets.gen.dart';
 import 'package:dog_app/repository/dog_repository.dart';
+import 'package:dog_app/repository/models/dogs.dart';
 import 'package:dog_app/state/bloc/dog_bloc.dart';
 import 'package:dog_app/view/dog_details_page.dart';
 import 'package:dog_app/view/settings_page.dart';
@@ -18,15 +19,13 @@ class DogListPage extends StatefulWidget {
 }
 
 class _DogListPageState extends State<DogListPage> {
-  final List<String> filteredList = [];
   late String path;
-  late List<List<Object?>> dogList;
-  late List<List<Object?>> filteredDogList;
+
+  late List<Dog> filteredDogList;
 
   Future<void> showDetailsPage({
     required BuildContext context,
-    required List<String?> subbreed,
-    required String breed,
+    required Dog dog,
     required String localPath,
   }) {
     return showDialog<void>(
@@ -45,8 +44,7 @@ class _DogListPageState extends State<DogListPage> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: DogDetailsPage(
-                  breed: breed,
-                  subbreed: subbreed,
+                  dog: dog,
                   localPath: localPath,
                 ),
               ),
@@ -59,20 +57,18 @@ class _DogListPageState extends State<DogListPage> {
 
   void _searchBreeds({required String text}) {
     setState(() {
-      filteredDogList = dogList;
-      filteredDogList = dogList
-          .where((element) => (element[0]! as String).contains(text))
-          .toList();
+      filteredDogList = context.read<DogBloc>().dogs;
+      filteredDogList =
+          filteredDogList.where((dog) => dog.breed.contains(text)).toList();
     });
   }
 
   @override
   void initState() {
-    final dogs = context.read<DogBloc>().dogs;
+    filteredDogList = context.read<DogBloc>().dogs;
     path = context.read<DogRepository>().localDirectory!.path;
-    dogList =
-        dogs.dogTypes.entries.map((entry) => [entry.key, entry.value]).toList();
-    filteredDogList = dogList;
+
+    filteredDogList = filteredDogList;
     super.initState();
   }
 
@@ -104,17 +100,16 @@ class _DogListPageState extends State<DogListPage> {
                       mainAxisSpacing: 16,
                     ),
                     itemBuilder: (context, index) {
-                      final dog = filteredDogList[index][0].toString();
+                      final dog = filteredDogList[index];
                       return GestureDetector(
                         onTap: () => showDetailsPage(
                           context: context,
-                          breed: dog,
-                          subbreed: filteredDogList[index][1]! as List<String?>,
+                          dog: dog,
                           localPath: path,
                         ),
                         child: _DogImage(
-                          imagePath: '$path/$dog.jpg',
-                          dogName: dog,
+                          imagePath: '$path/${dog.breed}.jpg',
+                          dogName: dog.breed,
                         ),
                       );
                     },
