@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:dog_app/repository/models/dog_image.dart';
 import 'package:dog_app/repository/models/dogs.dart';
 import 'package:dog_app/repository/models/mapper.dart';
 import 'package:dog_app/service/client.dart';
@@ -28,14 +29,14 @@ class DogRepository {
     }
   }
 
-  // Future<DogImage> _getDogImage({required String dogType}) async {
-  //   try {
-  //     final dogImageResult = await _dogClient.getDogImage(dogType: dogType);
-  //     return Mapper.mapToDogImage(dogImageResponse: dogImageResult);
-  //   } catch (_) {
-  //     rethrow;
-  //   }
-  // }
+  Future<DogImage> getDogImage({required String dogType}) async {
+    try {
+      final dogImageResult = await _dogClient.getDogImage(dogType: dogType);
+      return Mapper.mapToDogImage(dogImageResponse: dogImageResult);
+    } catch (_) {
+      rethrow;
+    }
+  }
 
   Future<void> getDogImagesAndSave({required Dogs dogs}) async {
     try {

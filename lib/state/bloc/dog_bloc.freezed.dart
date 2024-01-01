@@ -20,18 +20,21 @@ mixin _$DogEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() fetch,
     required TResult Function() fetchImages,
+    required TResult Function(String dogType) fetchSingleImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetch,
     TResult? Function()? fetchImages,
+    TResult? Function(String dogType)? fetchSingleImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetch,
     TResult Function()? fetchImages,
+    TResult Function(String dogType)? fetchSingleImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$DogEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(Fetch value) fetch,
     required TResult Function(FetchImages value) fetchImages,
+    required TResult Function(FetchSingleImage value) fetchSingleImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Fetch value)? fetch,
     TResult? Function(FetchImages value)? fetchImages,
+    TResult? Function(FetchSingleImage value)? fetchSingleImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Fetch value)? fetch,
     TResult Function(FetchImages value)? fetchImages,
+    TResult Function(FetchSingleImage value)? fetchSingleImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,6 +119,7 @@ class _$FetchImpl implements Fetch {
   TResult when<TResult extends Object?>({
     required TResult Function() fetch,
     required TResult Function() fetchImages,
+    required TResult Function(String dogType) fetchSingleImage,
   }) {
     return fetch();
   }
@@ -122,6 +129,7 @@ class _$FetchImpl implements Fetch {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetch,
     TResult? Function()? fetchImages,
+    TResult? Function(String dogType)? fetchSingleImage,
   }) {
     return fetch?.call();
   }
@@ -131,6 +139,7 @@ class _$FetchImpl implements Fetch {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetch,
     TResult Function()? fetchImages,
+    TResult Function(String dogType)? fetchSingleImage,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -144,6 +153,7 @@ class _$FetchImpl implements Fetch {
   TResult map<TResult extends Object?>({
     required TResult Function(Fetch value) fetch,
     required TResult Function(FetchImages value) fetchImages,
+    required TResult Function(FetchSingleImage value) fetchSingleImage,
   }) {
     return fetch(this);
   }
@@ -153,6 +163,7 @@ class _$FetchImpl implements Fetch {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Fetch value)? fetch,
     TResult? Function(FetchImages value)? fetchImages,
+    TResult? Function(FetchSingleImage value)? fetchSingleImage,
   }) {
     return fetch?.call(this);
   }
@@ -162,6 +173,7 @@ class _$FetchImpl implements Fetch {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Fetch value)? fetch,
     TResult Function(FetchImages value)? fetchImages,
+    TResult Function(FetchSingleImage value)? fetchSingleImage,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -215,6 +227,7 @@ class _$FetchImagesImpl implements FetchImages {
   TResult when<TResult extends Object?>({
     required TResult Function() fetch,
     required TResult Function() fetchImages,
+    required TResult Function(String dogType) fetchSingleImage,
   }) {
     return fetchImages();
   }
@@ -224,6 +237,7 @@ class _$FetchImagesImpl implements FetchImages {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetch,
     TResult? Function()? fetchImages,
+    TResult? Function(String dogType)? fetchSingleImage,
   }) {
     return fetchImages?.call();
   }
@@ -233,6 +247,7 @@ class _$FetchImagesImpl implements FetchImages {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetch,
     TResult Function()? fetchImages,
+    TResult Function(String dogType)? fetchSingleImage,
     required TResult orElse(),
   }) {
     if (fetchImages != null) {
@@ -246,6 +261,7 @@ class _$FetchImagesImpl implements FetchImages {
   TResult map<TResult extends Object?>({
     required TResult Function(Fetch value) fetch,
     required TResult Function(FetchImages value) fetchImages,
+    required TResult Function(FetchSingleImage value) fetchSingleImage,
   }) {
     return fetchImages(this);
   }
@@ -255,6 +271,7 @@ class _$FetchImagesImpl implements FetchImages {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Fetch value)? fetch,
     TResult? Function(FetchImages value)? fetchImages,
+    TResult? Function(FetchSingleImage value)? fetchSingleImage,
   }) {
     return fetchImages?.call(this);
   }
@@ -264,6 +281,7 @@ class _$FetchImagesImpl implements FetchImages {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Fetch value)? fetch,
     TResult Function(FetchImages value)? fetchImages,
+    TResult Function(FetchSingleImage value)? fetchSingleImage,
     required TResult orElse(),
   }) {
     if (fetchImages != null) {
@@ -278,6 +296,147 @@ abstract class FetchImages implements DogEvent {
 }
 
 /// @nodoc
+abstract class _$$FetchSingleImageImplCopyWith<$Res> {
+  factory _$$FetchSingleImageImplCopyWith(_$FetchSingleImageImpl value,
+          $Res Function(_$FetchSingleImageImpl) then) =
+      __$$FetchSingleImageImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String dogType});
+}
+
+/// @nodoc
+class __$$FetchSingleImageImplCopyWithImpl<$Res>
+    extends _$DogEventCopyWithImpl<$Res, _$FetchSingleImageImpl>
+    implements _$$FetchSingleImageImplCopyWith<$Res> {
+  __$$FetchSingleImageImplCopyWithImpl(_$FetchSingleImageImpl _value,
+      $Res Function(_$FetchSingleImageImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? dogType = null,
+  }) {
+    return _then(_$FetchSingleImageImpl(
+      dogType: null == dogType
+          ? _value.dogType
+          : dogType // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FetchSingleImageImpl implements FetchSingleImage {
+  const _$FetchSingleImageImpl({required this.dogType});
+
+  @override
+  final String dogType;
+
+  @override
+  String toString() {
+    return 'DogEvent.fetchSingleImage(dogType: $dogType)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchSingleImageImpl &&
+            (identical(other.dogType, dogType) || other.dogType == dogType));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, dogType);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FetchSingleImageImplCopyWith<_$FetchSingleImageImpl> get copyWith =>
+      __$$FetchSingleImageImplCopyWithImpl<_$FetchSingleImageImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetch,
+    required TResult Function() fetchImages,
+    required TResult Function(String dogType) fetchSingleImage,
+  }) {
+    return fetchSingleImage(dogType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetch,
+    TResult? Function()? fetchImages,
+    TResult? Function(String dogType)? fetchSingleImage,
+  }) {
+    return fetchSingleImage?.call(dogType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetch,
+    TResult Function()? fetchImages,
+    TResult Function(String dogType)? fetchSingleImage,
+    required TResult orElse(),
+  }) {
+    if (fetchSingleImage != null) {
+      return fetchSingleImage(dogType);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Fetch value) fetch,
+    required TResult Function(FetchImages value) fetchImages,
+    required TResult Function(FetchSingleImage value) fetchSingleImage,
+  }) {
+    return fetchSingleImage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Fetch value)? fetch,
+    TResult? Function(FetchImages value)? fetchImages,
+    TResult? Function(FetchSingleImage value)? fetchSingleImage,
+  }) {
+    return fetchSingleImage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Fetch value)? fetch,
+    TResult Function(FetchImages value)? fetchImages,
+    TResult Function(FetchSingleImage value)? fetchSingleImage,
+    required TResult orElse(),
+  }) {
+    if (fetchSingleImage != null) {
+      return fetchSingleImage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FetchSingleImage implements DogEvent {
+  const factory FetchSingleImage({required final String dogType}) =
+      _$FetchSingleImageImpl;
+
+  String get dogType;
+  @JsonKey(ignore: true)
+  _$$FetchSingleImageImplCopyWith<_$FetchSingleImageImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$DogState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -285,8 +444,12 @@ mixin _$DogState {
     required TResult Function() loading,
     required TResult Function() fecthed,
     required TResult Function() error,
+    required TResult Function() imagesFecthing,
     required TResult Function() imagesFecthed,
     required TResult Function() errorOnImagesFecthing,
+    required TResult Function() singleImageFecthing,
+    required TResult Function(String imageUrl) singleImageFecthed,
+    required TResult Function() errorOnSingleImageFecthing,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -295,8 +458,12 @@ mixin _$DogState {
     TResult? Function()? loading,
     TResult? Function()? fecthed,
     TResult? Function()? error,
+    TResult? Function()? imagesFecthing,
     TResult? Function()? imagesFecthed,
     TResult? Function()? errorOnImagesFecthing,
+    TResult? Function()? singleImageFecthing,
+    TResult? Function(String imageUrl)? singleImageFecthed,
+    TResult? Function()? errorOnSingleImageFecthing,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -305,8 +472,12 @@ mixin _$DogState {
     TResult Function()? loading,
     TResult Function()? fecthed,
     TResult Function()? error,
+    TResult Function()? imagesFecthing,
     TResult Function()? imagesFecthed,
     TResult Function()? errorOnImagesFecthing,
+    TResult Function()? singleImageFecthing,
+    TResult Function(String imageUrl)? singleImageFecthed,
+    TResult Function()? errorOnSingleImageFecthing,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -316,9 +487,14 @@ mixin _$DogState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Fetched value) fecthed,
     required TResult Function(_Error value) error,
+    required TResult Function(_ImagesFecthing value) imagesFecthing,
     required TResult Function(_ImagesFecthed value) imagesFecthed,
     required TResult Function(_ErrorOnImagesFecthing value)
         errorOnImagesFecthing,
+    required TResult Function(_SingleImageFecthing value) singleImageFecthing,
+    required TResult Function(_SingleImageFecthed value) singleImageFecthed,
+    required TResult Function(_ErrorOnSingleImageFecthing value)
+        errorOnSingleImageFecthing,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -327,8 +503,13 @@ mixin _$DogState {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Fetched value)? fecthed,
     TResult? Function(_Error value)? error,
+    TResult? Function(_ImagesFecthing value)? imagesFecthing,
     TResult? Function(_ImagesFecthed value)? imagesFecthed,
     TResult? Function(_ErrorOnImagesFecthing value)? errorOnImagesFecthing,
+    TResult? Function(_SingleImageFecthing value)? singleImageFecthing,
+    TResult? Function(_SingleImageFecthed value)? singleImageFecthed,
+    TResult? Function(_ErrorOnSingleImageFecthing value)?
+        errorOnSingleImageFecthing,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -337,8 +518,13 @@ mixin _$DogState {
     TResult Function(_Loading value)? loading,
     TResult Function(_Fetched value)? fecthed,
     TResult Function(_Error value)? error,
+    TResult Function(_ImagesFecthing value)? imagesFecthing,
     TResult Function(_ImagesFecthed value)? imagesFecthed,
     TResult Function(_ErrorOnImagesFecthing value)? errorOnImagesFecthing,
+    TResult Function(_SingleImageFecthing value)? singleImageFecthing,
+    TResult Function(_SingleImageFecthed value)? singleImageFecthed,
+    TResult Function(_ErrorOnSingleImageFecthing value)?
+        errorOnSingleImageFecthing,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -403,8 +589,12 @@ class _$InitialImpl implements _Initial {
     required TResult Function() loading,
     required TResult Function() fecthed,
     required TResult Function() error,
+    required TResult Function() imagesFecthing,
     required TResult Function() imagesFecthed,
     required TResult Function() errorOnImagesFecthing,
+    required TResult Function() singleImageFecthing,
+    required TResult Function(String imageUrl) singleImageFecthed,
+    required TResult Function() errorOnSingleImageFecthing,
   }) {
     return initial();
   }
@@ -416,8 +606,12 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? loading,
     TResult? Function()? fecthed,
     TResult? Function()? error,
+    TResult? Function()? imagesFecthing,
     TResult? Function()? imagesFecthed,
     TResult? Function()? errorOnImagesFecthing,
+    TResult? Function()? singleImageFecthing,
+    TResult? Function(String imageUrl)? singleImageFecthed,
+    TResult? Function()? errorOnSingleImageFecthing,
   }) {
     return initial?.call();
   }
@@ -429,8 +623,12 @@ class _$InitialImpl implements _Initial {
     TResult Function()? loading,
     TResult Function()? fecthed,
     TResult Function()? error,
+    TResult Function()? imagesFecthing,
     TResult Function()? imagesFecthed,
     TResult Function()? errorOnImagesFecthing,
+    TResult Function()? singleImageFecthing,
+    TResult Function(String imageUrl)? singleImageFecthed,
+    TResult Function()? errorOnSingleImageFecthing,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -446,9 +644,14 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Fetched value) fecthed,
     required TResult Function(_Error value) error,
+    required TResult Function(_ImagesFecthing value) imagesFecthing,
     required TResult Function(_ImagesFecthed value) imagesFecthed,
     required TResult Function(_ErrorOnImagesFecthing value)
         errorOnImagesFecthing,
+    required TResult Function(_SingleImageFecthing value) singleImageFecthing,
+    required TResult Function(_SingleImageFecthed value) singleImageFecthed,
+    required TResult Function(_ErrorOnSingleImageFecthing value)
+        errorOnSingleImageFecthing,
   }) {
     return initial(this);
   }
@@ -460,8 +663,13 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Fetched value)? fecthed,
     TResult? Function(_Error value)? error,
+    TResult? Function(_ImagesFecthing value)? imagesFecthing,
     TResult? Function(_ImagesFecthed value)? imagesFecthed,
     TResult? Function(_ErrorOnImagesFecthing value)? errorOnImagesFecthing,
+    TResult? Function(_SingleImageFecthing value)? singleImageFecthing,
+    TResult? Function(_SingleImageFecthed value)? singleImageFecthed,
+    TResult? Function(_ErrorOnSingleImageFecthing value)?
+        errorOnSingleImageFecthing,
   }) {
     return initial?.call(this);
   }
@@ -473,8 +681,13 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Loading value)? loading,
     TResult Function(_Fetched value)? fecthed,
     TResult Function(_Error value)? error,
+    TResult Function(_ImagesFecthing value)? imagesFecthing,
     TResult Function(_ImagesFecthed value)? imagesFecthed,
     TResult Function(_ErrorOnImagesFecthing value)? errorOnImagesFecthing,
+    TResult Function(_SingleImageFecthing value)? singleImageFecthing,
+    TResult Function(_SingleImageFecthed value)? singleImageFecthed,
+    TResult Function(_ErrorOnSingleImageFecthing value)?
+        errorOnSingleImageFecthing,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -530,8 +743,12 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() loading,
     required TResult Function() fecthed,
     required TResult Function() error,
+    required TResult Function() imagesFecthing,
     required TResult Function() imagesFecthed,
     required TResult Function() errorOnImagesFecthing,
+    required TResult Function() singleImageFecthing,
+    required TResult Function(String imageUrl) singleImageFecthed,
+    required TResult Function() errorOnSingleImageFecthing,
   }) {
     return loading();
   }
@@ -543,8 +760,12 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? loading,
     TResult? Function()? fecthed,
     TResult? Function()? error,
+    TResult? Function()? imagesFecthing,
     TResult? Function()? imagesFecthed,
     TResult? Function()? errorOnImagesFecthing,
+    TResult? Function()? singleImageFecthing,
+    TResult? Function(String imageUrl)? singleImageFecthed,
+    TResult? Function()? errorOnSingleImageFecthing,
   }) {
     return loading?.call();
   }
@@ -556,8 +777,12 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? loading,
     TResult Function()? fecthed,
     TResult Function()? error,
+    TResult Function()? imagesFecthing,
     TResult Function()? imagesFecthed,
     TResult Function()? errorOnImagesFecthing,
+    TResult Function()? singleImageFecthing,
+    TResult Function(String imageUrl)? singleImageFecthed,
+    TResult Function()? errorOnSingleImageFecthing,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -573,9 +798,14 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Fetched value) fecthed,
     required TResult Function(_Error value) error,
+    required TResult Function(_ImagesFecthing value) imagesFecthing,
     required TResult Function(_ImagesFecthed value) imagesFecthed,
     required TResult Function(_ErrorOnImagesFecthing value)
         errorOnImagesFecthing,
+    required TResult Function(_SingleImageFecthing value) singleImageFecthing,
+    required TResult Function(_SingleImageFecthed value) singleImageFecthed,
+    required TResult Function(_ErrorOnSingleImageFecthing value)
+        errorOnSingleImageFecthing,
   }) {
     return loading(this);
   }
@@ -587,8 +817,13 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Fetched value)? fecthed,
     TResult? Function(_Error value)? error,
+    TResult? Function(_ImagesFecthing value)? imagesFecthing,
     TResult? Function(_ImagesFecthed value)? imagesFecthed,
     TResult? Function(_ErrorOnImagesFecthing value)? errorOnImagesFecthing,
+    TResult? Function(_SingleImageFecthing value)? singleImageFecthing,
+    TResult? Function(_SingleImageFecthed value)? singleImageFecthed,
+    TResult? Function(_ErrorOnSingleImageFecthing value)?
+        errorOnSingleImageFecthing,
   }) {
     return loading?.call(this);
   }
@@ -600,8 +835,13 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_Fetched value)? fecthed,
     TResult Function(_Error value)? error,
+    TResult Function(_ImagesFecthing value)? imagesFecthing,
     TResult Function(_ImagesFecthed value)? imagesFecthed,
     TResult Function(_ErrorOnImagesFecthing value)? errorOnImagesFecthing,
+    TResult Function(_SingleImageFecthing value)? singleImageFecthing,
+    TResult Function(_SingleImageFecthed value)? singleImageFecthed,
+    TResult Function(_ErrorOnSingleImageFecthing value)?
+        errorOnSingleImageFecthing,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -657,8 +897,12 @@ class _$FetchedImpl implements _Fetched {
     required TResult Function() loading,
     required TResult Function() fecthed,
     required TResult Function() error,
+    required TResult Function() imagesFecthing,
     required TResult Function() imagesFecthed,
     required TResult Function() errorOnImagesFecthing,
+    required TResult Function() singleImageFecthing,
+    required TResult Function(String imageUrl) singleImageFecthed,
+    required TResult Function() errorOnSingleImageFecthing,
   }) {
     return fecthed();
   }
@@ -670,8 +914,12 @@ class _$FetchedImpl implements _Fetched {
     TResult? Function()? loading,
     TResult? Function()? fecthed,
     TResult? Function()? error,
+    TResult? Function()? imagesFecthing,
     TResult? Function()? imagesFecthed,
     TResult? Function()? errorOnImagesFecthing,
+    TResult? Function()? singleImageFecthing,
+    TResult? Function(String imageUrl)? singleImageFecthed,
+    TResult? Function()? errorOnSingleImageFecthing,
   }) {
     return fecthed?.call();
   }
@@ -683,8 +931,12 @@ class _$FetchedImpl implements _Fetched {
     TResult Function()? loading,
     TResult Function()? fecthed,
     TResult Function()? error,
+    TResult Function()? imagesFecthing,
     TResult Function()? imagesFecthed,
     TResult Function()? errorOnImagesFecthing,
+    TResult Function()? singleImageFecthing,
+    TResult Function(String imageUrl)? singleImageFecthed,
+    TResult Function()? errorOnSingleImageFecthing,
     required TResult orElse(),
   }) {
     if (fecthed != null) {
@@ -700,9 +952,14 @@ class _$FetchedImpl implements _Fetched {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Fetched value) fecthed,
     required TResult Function(_Error value) error,
+    required TResult Function(_ImagesFecthing value) imagesFecthing,
     required TResult Function(_ImagesFecthed value) imagesFecthed,
     required TResult Function(_ErrorOnImagesFecthing value)
         errorOnImagesFecthing,
+    required TResult Function(_SingleImageFecthing value) singleImageFecthing,
+    required TResult Function(_SingleImageFecthed value) singleImageFecthed,
+    required TResult Function(_ErrorOnSingleImageFecthing value)
+        errorOnSingleImageFecthing,
   }) {
     return fecthed(this);
   }
@@ -714,8 +971,13 @@ class _$FetchedImpl implements _Fetched {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Fetched value)? fecthed,
     TResult? Function(_Error value)? error,
+    TResult? Function(_ImagesFecthing value)? imagesFecthing,
     TResult? Function(_ImagesFecthed value)? imagesFecthed,
     TResult? Function(_ErrorOnImagesFecthing value)? errorOnImagesFecthing,
+    TResult? Function(_SingleImageFecthing value)? singleImageFecthing,
+    TResult? Function(_SingleImageFecthed value)? singleImageFecthed,
+    TResult? Function(_ErrorOnSingleImageFecthing value)?
+        errorOnSingleImageFecthing,
   }) {
     return fecthed?.call(this);
   }
@@ -727,8 +989,13 @@ class _$FetchedImpl implements _Fetched {
     TResult Function(_Loading value)? loading,
     TResult Function(_Fetched value)? fecthed,
     TResult Function(_Error value)? error,
+    TResult Function(_ImagesFecthing value)? imagesFecthing,
     TResult Function(_ImagesFecthed value)? imagesFecthed,
     TResult Function(_ErrorOnImagesFecthing value)? errorOnImagesFecthing,
+    TResult Function(_SingleImageFecthing value)? singleImageFecthing,
+    TResult Function(_SingleImageFecthed value)? singleImageFecthed,
+    TResult Function(_ErrorOnSingleImageFecthing value)?
+        errorOnSingleImageFecthing,
     required TResult orElse(),
   }) {
     if (fecthed != null) {
@@ -784,8 +1051,12 @@ class _$ErrorImpl implements _Error {
     required TResult Function() loading,
     required TResult Function() fecthed,
     required TResult Function() error,
+    required TResult Function() imagesFecthing,
     required TResult Function() imagesFecthed,
     required TResult Function() errorOnImagesFecthing,
+    required TResult Function() singleImageFecthing,
+    required TResult Function(String imageUrl) singleImageFecthed,
+    required TResult Function() errorOnSingleImageFecthing,
   }) {
     return error();
   }
@@ -797,8 +1068,12 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? loading,
     TResult? Function()? fecthed,
     TResult? Function()? error,
+    TResult? Function()? imagesFecthing,
     TResult? Function()? imagesFecthed,
     TResult? Function()? errorOnImagesFecthing,
+    TResult? Function()? singleImageFecthing,
+    TResult? Function(String imageUrl)? singleImageFecthed,
+    TResult? Function()? errorOnSingleImageFecthing,
   }) {
     return error?.call();
   }
@@ -810,8 +1085,12 @@ class _$ErrorImpl implements _Error {
     TResult Function()? loading,
     TResult Function()? fecthed,
     TResult Function()? error,
+    TResult Function()? imagesFecthing,
     TResult Function()? imagesFecthed,
     TResult Function()? errorOnImagesFecthing,
+    TResult Function()? singleImageFecthing,
+    TResult Function(String imageUrl)? singleImageFecthed,
+    TResult Function()? errorOnSingleImageFecthing,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -827,9 +1106,14 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Fetched value) fecthed,
     required TResult Function(_Error value) error,
+    required TResult Function(_ImagesFecthing value) imagesFecthing,
     required TResult Function(_ImagesFecthed value) imagesFecthed,
     required TResult Function(_ErrorOnImagesFecthing value)
         errorOnImagesFecthing,
+    required TResult Function(_SingleImageFecthing value) singleImageFecthing,
+    required TResult Function(_SingleImageFecthed value) singleImageFecthed,
+    required TResult Function(_ErrorOnSingleImageFecthing value)
+        errorOnSingleImageFecthing,
   }) {
     return error(this);
   }
@@ -841,8 +1125,13 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Fetched value)? fecthed,
     TResult? Function(_Error value)? error,
+    TResult? Function(_ImagesFecthing value)? imagesFecthing,
     TResult? Function(_ImagesFecthed value)? imagesFecthed,
     TResult? Function(_ErrorOnImagesFecthing value)? errorOnImagesFecthing,
+    TResult? Function(_SingleImageFecthing value)? singleImageFecthing,
+    TResult? Function(_SingleImageFecthed value)? singleImageFecthed,
+    TResult? Function(_ErrorOnSingleImageFecthing value)?
+        errorOnSingleImageFecthing,
   }) {
     return error?.call(this);
   }
@@ -854,8 +1143,13 @@ class _$ErrorImpl implements _Error {
     TResult Function(_Loading value)? loading,
     TResult Function(_Fetched value)? fecthed,
     TResult Function(_Error value)? error,
+    TResult Function(_ImagesFecthing value)? imagesFecthing,
     TResult Function(_ImagesFecthed value)? imagesFecthed,
     TResult Function(_ErrorOnImagesFecthing value)? errorOnImagesFecthing,
+    TResult Function(_SingleImageFecthing value)? singleImageFecthing,
+    TResult Function(_SingleImageFecthed value)? singleImageFecthed,
+    TResult Function(_ErrorOnSingleImageFecthing value)?
+        errorOnSingleImageFecthing,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -867,6 +1161,160 @@ class _$ErrorImpl implements _Error {
 
 abstract class _Error implements DogState {
   const factory _Error() = _$ErrorImpl;
+}
+
+/// @nodoc
+abstract class _$$ImagesFecthingImplCopyWith<$Res> {
+  factory _$$ImagesFecthingImplCopyWith(_$ImagesFecthingImpl value,
+          $Res Function(_$ImagesFecthingImpl) then) =
+      __$$ImagesFecthingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ImagesFecthingImplCopyWithImpl<$Res>
+    extends _$DogStateCopyWithImpl<$Res, _$ImagesFecthingImpl>
+    implements _$$ImagesFecthingImplCopyWith<$Res> {
+  __$$ImagesFecthingImplCopyWithImpl(
+      _$ImagesFecthingImpl _value, $Res Function(_$ImagesFecthingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ImagesFecthingImpl implements _ImagesFecthing {
+  const _$ImagesFecthingImpl();
+
+  @override
+  String toString() {
+    return 'DogState.imagesFecthing()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ImagesFecthingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() fecthed,
+    required TResult Function() error,
+    required TResult Function() imagesFecthing,
+    required TResult Function() imagesFecthed,
+    required TResult Function() errorOnImagesFecthing,
+    required TResult Function() singleImageFecthing,
+    required TResult Function(String imageUrl) singleImageFecthed,
+    required TResult Function() errorOnSingleImageFecthing,
+  }) {
+    return imagesFecthing();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? fecthed,
+    TResult? Function()? error,
+    TResult? Function()? imagesFecthing,
+    TResult? Function()? imagesFecthed,
+    TResult? Function()? errorOnImagesFecthing,
+    TResult? Function()? singleImageFecthing,
+    TResult? Function(String imageUrl)? singleImageFecthed,
+    TResult? Function()? errorOnSingleImageFecthing,
+  }) {
+    return imagesFecthing?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? fecthed,
+    TResult Function()? error,
+    TResult Function()? imagesFecthing,
+    TResult Function()? imagesFecthed,
+    TResult Function()? errorOnImagesFecthing,
+    TResult Function()? singleImageFecthing,
+    TResult Function(String imageUrl)? singleImageFecthed,
+    TResult Function()? errorOnSingleImageFecthing,
+    required TResult orElse(),
+  }) {
+    if (imagesFecthing != null) {
+      return imagesFecthing();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Fetched value) fecthed,
+    required TResult Function(_Error value) error,
+    required TResult Function(_ImagesFecthing value) imagesFecthing,
+    required TResult Function(_ImagesFecthed value) imagesFecthed,
+    required TResult Function(_ErrorOnImagesFecthing value)
+        errorOnImagesFecthing,
+    required TResult Function(_SingleImageFecthing value) singleImageFecthing,
+    required TResult Function(_SingleImageFecthed value) singleImageFecthed,
+    required TResult Function(_ErrorOnSingleImageFecthing value)
+        errorOnSingleImageFecthing,
+  }) {
+    return imagesFecthing(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Fetched value)? fecthed,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_ImagesFecthing value)? imagesFecthing,
+    TResult? Function(_ImagesFecthed value)? imagesFecthed,
+    TResult? Function(_ErrorOnImagesFecthing value)? errorOnImagesFecthing,
+    TResult? Function(_SingleImageFecthing value)? singleImageFecthing,
+    TResult? Function(_SingleImageFecthed value)? singleImageFecthed,
+    TResult? Function(_ErrorOnSingleImageFecthing value)?
+        errorOnSingleImageFecthing,
+  }) {
+    return imagesFecthing?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Fetched value)? fecthed,
+    TResult Function(_Error value)? error,
+    TResult Function(_ImagesFecthing value)? imagesFecthing,
+    TResult Function(_ImagesFecthed value)? imagesFecthed,
+    TResult Function(_ErrorOnImagesFecthing value)? errorOnImagesFecthing,
+    TResult Function(_SingleImageFecthing value)? singleImageFecthing,
+    TResult Function(_SingleImageFecthed value)? singleImageFecthed,
+    TResult Function(_ErrorOnSingleImageFecthing value)?
+        errorOnSingleImageFecthing,
+    required TResult orElse(),
+  }) {
+    if (imagesFecthing != null) {
+      return imagesFecthing(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ImagesFecthing implements DogState {
+  const factory _ImagesFecthing() = _$ImagesFecthingImpl;
 }
 
 /// @nodoc
@@ -911,8 +1359,12 @@ class _$ImagesFecthedImpl implements _ImagesFecthed {
     required TResult Function() loading,
     required TResult Function() fecthed,
     required TResult Function() error,
+    required TResult Function() imagesFecthing,
     required TResult Function() imagesFecthed,
     required TResult Function() errorOnImagesFecthing,
+    required TResult Function() singleImageFecthing,
+    required TResult Function(String imageUrl) singleImageFecthed,
+    required TResult Function() errorOnSingleImageFecthing,
   }) {
     return imagesFecthed();
   }
@@ -924,8 +1376,12 @@ class _$ImagesFecthedImpl implements _ImagesFecthed {
     TResult? Function()? loading,
     TResult? Function()? fecthed,
     TResult? Function()? error,
+    TResult? Function()? imagesFecthing,
     TResult? Function()? imagesFecthed,
     TResult? Function()? errorOnImagesFecthing,
+    TResult? Function()? singleImageFecthing,
+    TResult? Function(String imageUrl)? singleImageFecthed,
+    TResult? Function()? errorOnSingleImageFecthing,
   }) {
     return imagesFecthed?.call();
   }
@@ -937,8 +1393,12 @@ class _$ImagesFecthedImpl implements _ImagesFecthed {
     TResult Function()? loading,
     TResult Function()? fecthed,
     TResult Function()? error,
+    TResult Function()? imagesFecthing,
     TResult Function()? imagesFecthed,
     TResult Function()? errorOnImagesFecthing,
+    TResult Function()? singleImageFecthing,
+    TResult Function(String imageUrl)? singleImageFecthed,
+    TResult Function()? errorOnSingleImageFecthing,
     required TResult orElse(),
   }) {
     if (imagesFecthed != null) {
@@ -954,9 +1414,14 @@ class _$ImagesFecthedImpl implements _ImagesFecthed {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Fetched value) fecthed,
     required TResult Function(_Error value) error,
+    required TResult Function(_ImagesFecthing value) imagesFecthing,
     required TResult Function(_ImagesFecthed value) imagesFecthed,
     required TResult Function(_ErrorOnImagesFecthing value)
         errorOnImagesFecthing,
+    required TResult Function(_SingleImageFecthing value) singleImageFecthing,
+    required TResult Function(_SingleImageFecthed value) singleImageFecthed,
+    required TResult Function(_ErrorOnSingleImageFecthing value)
+        errorOnSingleImageFecthing,
   }) {
     return imagesFecthed(this);
   }
@@ -968,8 +1433,13 @@ class _$ImagesFecthedImpl implements _ImagesFecthed {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Fetched value)? fecthed,
     TResult? Function(_Error value)? error,
+    TResult? Function(_ImagesFecthing value)? imagesFecthing,
     TResult? Function(_ImagesFecthed value)? imagesFecthed,
     TResult? Function(_ErrorOnImagesFecthing value)? errorOnImagesFecthing,
+    TResult? Function(_SingleImageFecthing value)? singleImageFecthing,
+    TResult? Function(_SingleImageFecthed value)? singleImageFecthed,
+    TResult? Function(_ErrorOnSingleImageFecthing value)?
+        errorOnSingleImageFecthing,
   }) {
     return imagesFecthed?.call(this);
   }
@@ -981,8 +1451,13 @@ class _$ImagesFecthedImpl implements _ImagesFecthed {
     TResult Function(_Loading value)? loading,
     TResult Function(_Fetched value)? fecthed,
     TResult Function(_Error value)? error,
+    TResult Function(_ImagesFecthing value)? imagesFecthing,
     TResult Function(_ImagesFecthed value)? imagesFecthed,
     TResult Function(_ErrorOnImagesFecthing value)? errorOnImagesFecthing,
+    TResult Function(_SingleImageFecthing value)? singleImageFecthing,
+    TResult Function(_SingleImageFecthed value)? singleImageFecthed,
+    TResult Function(_ErrorOnSingleImageFecthing value)?
+        errorOnSingleImageFecthing,
     required TResult orElse(),
   }) {
     if (imagesFecthed != null) {
@@ -1040,8 +1515,12 @@ class _$ErrorOnImagesFecthingImpl implements _ErrorOnImagesFecthing {
     required TResult Function() loading,
     required TResult Function() fecthed,
     required TResult Function() error,
+    required TResult Function() imagesFecthing,
     required TResult Function() imagesFecthed,
     required TResult Function() errorOnImagesFecthing,
+    required TResult Function() singleImageFecthing,
+    required TResult Function(String imageUrl) singleImageFecthed,
+    required TResult Function() errorOnSingleImageFecthing,
   }) {
     return errorOnImagesFecthing();
   }
@@ -1053,8 +1532,12 @@ class _$ErrorOnImagesFecthingImpl implements _ErrorOnImagesFecthing {
     TResult? Function()? loading,
     TResult? Function()? fecthed,
     TResult? Function()? error,
+    TResult? Function()? imagesFecthing,
     TResult? Function()? imagesFecthed,
     TResult? Function()? errorOnImagesFecthing,
+    TResult? Function()? singleImageFecthing,
+    TResult? Function(String imageUrl)? singleImageFecthed,
+    TResult? Function()? errorOnSingleImageFecthing,
   }) {
     return errorOnImagesFecthing?.call();
   }
@@ -1066,8 +1549,12 @@ class _$ErrorOnImagesFecthingImpl implements _ErrorOnImagesFecthing {
     TResult Function()? loading,
     TResult Function()? fecthed,
     TResult Function()? error,
+    TResult Function()? imagesFecthing,
     TResult Function()? imagesFecthed,
     TResult Function()? errorOnImagesFecthing,
+    TResult Function()? singleImageFecthing,
+    TResult Function(String imageUrl)? singleImageFecthed,
+    TResult Function()? errorOnSingleImageFecthing,
     required TResult orElse(),
   }) {
     if (errorOnImagesFecthing != null) {
@@ -1083,9 +1570,14 @@ class _$ErrorOnImagesFecthingImpl implements _ErrorOnImagesFecthing {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Fetched value) fecthed,
     required TResult Function(_Error value) error,
+    required TResult Function(_ImagesFecthing value) imagesFecthing,
     required TResult Function(_ImagesFecthed value) imagesFecthed,
     required TResult Function(_ErrorOnImagesFecthing value)
         errorOnImagesFecthing,
+    required TResult Function(_SingleImageFecthing value) singleImageFecthing,
+    required TResult Function(_SingleImageFecthed value) singleImageFecthed,
+    required TResult Function(_ErrorOnSingleImageFecthing value)
+        errorOnSingleImageFecthing,
   }) {
     return errorOnImagesFecthing(this);
   }
@@ -1097,8 +1589,13 @@ class _$ErrorOnImagesFecthingImpl implements _ErrorOnImagesFecthing {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Fetched value)? fecthed,
     TResult? Function(_Error value)? error,
+    TResult? Function(_ImagesFecthing value)? imagesFecthing,
     TResult? Function(_ImagesFecthed value)? imagesFecthed,
     TResult? Function(_ErrorOnImagesFecthing value)? errorOnImagesFecthing,
+    TResult? Function(_SingleImageFecthing value)? singleImageFecthing,
+    TResult? Function(_SingleImageFecthed value)? singleImageFecthed,
+    TResult? Function(_ErrorOnSingleImageFecthing value)?
+        errorOnSingleImageFecthing,
   }) {
     return errorOnImagesFecthing?.call(this);
   }
@@ -1110,8 +1607,13 @@ class _$ErrorOnImagesFecthingImpl implements _ErrorOnImagesFecthing {
     TResult Function(_Loading value)? loading,
     TResult Function(_Fetched value)? fecthed,
     TResult Function(_Error value)? error,
+    TResult Function(_ImagesFecthing value)? imagesFecthing,
     TResult Function(_ImagesFecthed value)? imagesFecthed,
     TResult Function(_ErrorOnImagesFecthing value)? errorOnImagesFecthing,
+    TResult Function(_SingleImageFecthing value)? singleImageFecthing,
+    TResult Function(_SingleImageFecthed value)? singleImageFecthed,
+    TResult Function(_ErrorOnSingleImageFecthing value)?
+        errorOnSingleImageFecthing,
     required TResult orElse(),
   }) {
     if (errorOnImagesFecthing != null) {
@@ -1123,4 +1625,505 @@ class _$ErrorOnImagesFecthingImpl implements _ErrorOnImagesFecthing {
 
 abstract class _ErrorOnImagesFecthing implements DogState {
   const factory _ErrorOnImagesFecthing() = _$ErrorOnImagesFecthingImpl;
+}
+
+/// @nodoc
+abstract class _$$SingleImageFecthingImplCopyWith<$Res> {
+  factory _$$SingleImageFecthingImplCopyWith(_$SingleImageFecthingImpl value,
+          $Res Function(_$SingleImageFecthingImpl) then) =
+      __$$SingleImageFecthingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SingleImageFecthingImplCopyWithImpl<$Res>
+    extends _$DogStateCopyWithImpl<$Res, _$SingleImageFecthingImpl>
+    implements _$$SingleImageFecthingImplCopyWith<$Res> {
+  __$$SingleImageFecthingImplCopyWithImpl(_$SingleImageFecthingImpl _value,
+      $Res Function(_$SingleImageFecthingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$SingleImageFecthingImpl implements _SingleImageFecthing {
+  const _$SingleImageFecthingImpl();
+
+  @override
+  String toString() {
+    return 'DogState.singleImageFecthing()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SingleImageFecthingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() fecthed,
+    required TResult Function() error,
+    required TResult Function() imagesFecthing,
+    required TResult Function() imagesFecthed,
+    required TResult Function() errorOnImagesFecthing,
+    required TResult Function() singleImageFecthing,
+    required TResult Function(String imageUrl) singleImageFecthed,
+    required TResult Function() errorOnSingleImageFecthing,
+  }) {
+    return singleImageFecthing();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? fecthed,
+    TResult? Function()? error,
+    TResult? Function()? imagesFecthing,
+    TResult? Function()? imagesFecthed,
+    TResult? Function()? errorOnImagesFecthing,
+    TResult? Function()? singleImageFecthing,
+    TResult? Function(String imageUrl)? singleImageFecthed,
+    TResult? Function()? errorOnSingleImageFecthing,
+  }) {
+    return singleImageFecthing?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? fecthed,
+    TResult Function()? error,
+    TResult Function()? imagesFecthing,
+    TResult Function()? imagesFecthed,
+    TResult Function()? errorOnImagesFecthing,
+    TResult Function()? singleImageFecthing,
+    TResult Function(String imageUrl)? singleImageFecthed,
+    TResult Function()? errorOnSingleImageFecthing,
+    required TResult orElse(),
+  }) {
+    if (singleImageFecthing != null) {
+      return singleImageFecthing();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Fetched value) fecthed,
+    required TResult Function(_Error value) error,
+    required TResult Function(_ImagesFecthing value) imagesFecthing,
+    required TResult Function(_ImagesFecthed value) imagesFecthed,
+    required TResult Function(_ErrorOnImagesFecthing value)
+        errorOnImagesFecthing,
+    required TResult Function(_SingleImageFecthing value) singleImageFecthing,
+    required TResult Function(_SingleImageFecthed value) singleImageFecthed,
+    required TResult Function(_ErrorOnSingleImageFecthing value)
+        errorOnSingleImageFecthing,
+  }) {
+    return singleImageFecthing(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Fetched value)? fecthed,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_ImagesFecthing value)? imagesFecthing,
+    TResult? Function(_ImagesFecthed value)? imagesFecthed,
+    TResult? Function(_ErrorOnImagesFecthing value)? errorOnImagesFecthing,
+    TResult? Function(_SingleImageFecthing value)? singleImageFecthing,
+    TResult? Function(_SingleImageFecthed value)? singleImageFecthed,
+    TResult? Function(_ErrorOnSingleImageFecthing value)?
+        errorOnSingleImageFecthing,
+  }) {
+    return singleImageFecthing?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Fetched value)? fecthed,
+    TResult Function(_Error value)? error,
+    TResult Function(_ImagesFecthing value)? imagesFecthing,
+    TResult Function(_ImagesFecthed value)? imagesFecthed,
+    TResult Function(_ErrorOnImagesFecthing value)? errorOnImagesFecthing,
+    TResult Function(_SingleImageFecthing value)? singleImageFecthing,
+    TResult Function(_SingleImageFecthed value)? singleImageFecthed,
+    TResult Function(_ErrorOnSingleImageFecthing value)?
+        errorOnSingleImageFecthing,
+    required TResult orElse(),
+  }) {
+    if (singleImageFecthing != null) {
+      return singleImageFecthing(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SingleImageFecthing implements DogState {
+  const factory _SingleImageFecthing() = _$SingleImageFecthingImpl;
+}
+
+/// @nodoc
+abstract class _$$SingleImageFecthedImplCopyWith<$Res> {
+  factory _$$SingleImageFecthedImplCopyWith(_$SingleImageFecthedImpl value,
+          $Res Function(_$SingleImageFecthedImpl) then) =
+      __$$SingleImageFecthedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String imageUrl});
+}
+
+/// @nodoc
+class __$$SingleImageFecthedImplCopyWithImpl<$Res>
+    extends _$DogStateCopyWithImpl<$Res, _$SingleImageFecthedImpl>
+    implements _$$SingleImageFecthedImplCopyWith<$Res> {
+  __$$SingleImageFecthedImplCopyWithImpl(_$SingleImageFecthedImpl _value,
+      $Res Function(_$SingleImageFecthedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? imageUrl = null,
+  }) {
+    return _then(_$SingleImageFecthedImpl(
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SingleImageFecthedImpl implements _SingleImageFecthed {
+  const _$SingleImageFecthedImpl({required this.imageUrl});
+
+  @override
+  final String imageUrl;
+
+  @override
+  String toString() {
+    return 'DogState.singleImageFecthed(imageUrl: $imageUrl)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SingleImageFecthedImpl &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, imageUrl);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SingleImageFecthedImplCopyWith<_$SingleImageFecthedImpl> get copyWith =>
+      __$$SingleImageFecthedImplCopyWithImpl<_$SingleImageFecthedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() fecthed,
+    required TResult Function() error,
+    required TResult Function() imagesFecthing,
+    required TResult Function() imagesFecthed,
+    required TResult Function() errorOnImagesFecthing,
+    required TResult Function() singleImageFecthing,
+    required TResult Function(String imageUrl) singleImageFecthed,
+    required TResult Function() errorOnSingleImageFecthing,
+  }) {
+    return singleImageFecthed(imageUrl);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? fecthed,
+    TResult? Function()? error,
+    TResult? Function()? imagesFecthing,
+    TResult? Function()? imagesFecthed,
+    TResult? Function()? errorOnImagesFecthing,
+    TResult? Function()? singleImageFecthing,
+    TResult? Function(String imageUrl)? singleImageFecthed,
+    TResult? Function()? errorOnSingleImageFecthing,
+  }) {
+    return singleImageFecthed?.call(imageUrl);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? fecthed,
+    TResult Function()? error,
+    TResult Function()? imagesFecthing,
+    TResult Function()? imagesFecthed,
+    TResult Function()? errorOnImagesFecthing,
+    TResult Function()? singleImageFecthing,
+    TResult Function(String imageUrl)? singleImageFecthed,
+    TResult Function()? errorOnSingleImageFecthing,
+    required TResult orElse(),
+  }) {
+    if (singleImageFecthed != null) {
+      return singleImageFecthed(imageUrl);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Fetched value) fecthed,
+    required TResult Function(_Error value) error,
+    required TResult Function(_ImagesFecthing value) imagesFecthing,
+    required TResult Function(_ImagesFecthed value) imagesFecthed,
+    required TResult Function(_ErrorOnImagesFecthing value)
+        errorOnImagesFecthing,
+    required TResult Function(_SingleImageFecthing value) singleImageFecthing,
+    required TResult Function(_SingleImageFecthed value) singleImageFecthed,
+    required TResult Function(_ErrorOnSingleImageFecthing value)
+        errorOnSingleImageFecthing,
+  }) {
+    return singleImageFecthed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Fetched value)? fecthed,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_ImagesFecthing value)? imagesFecthing,
+    TResult? Function(_ImagesFecthed value)? imagesFecthed,
+    TResult? Function(_ErrorOnImagesFecthing value)? errorOnImagesFecthing,
+    TResult? Function(_SingleImageFecthing value)? singleImageFecthing,
+    TResult? Function(_SingleImageFecthed value)? singleImageFecthed,
+    TResult? Function(_ErrorOnSingleImageFecthing value)?
+        errorOnSingleImageFecthing,
+  }) {
+    return singleImageFecthed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Fetched value)? fecthed,
+    TResult Function(_Error value)? error,
+    TResult Function(_ImagesFecthing value)? imagesFecthing,
+    TResult Function(_ImagesFecthed value)? imagesFecthed,
+    TResult Function(_ErrorOnImagesFecthing value)? errorOnImagesFecthing,
+    TResult Function(_SingleImageFecthing value)? singleImageFecthing,
+    TResult Function(_SingleImageFecthed value)? singleImageFecthed,
+    TResult Function(_ErrorOnSingleImageFecthing value)?
+        errorOnSingleImageFecthing,
+    required TResult orElse(),
+  }) {
+    if (singleImageFecthed != null) {
+      return singleImageFecthed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SingleImageFecthed implements DogState {
+  const factory _SingleImageFecthed({required final String imageUrl}) =
+      _$SingleImageFecthedImpl;
+
+  String get imageUrl;
+  @JsonKey(ignore: true)
+  _$$SingleImageFecthedImplCopyWith<_$SingleImageFecthedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ErrorOnSingleImageFecthingImplCopyWith<$Res> {
+  factory _$$ErrorOnSingleImageFecthingImplCopyWith(
+          _$ErrorOnSingleImageFecthingImpl value,
+          $Res Function(_$ErrorOnSingleImageFecthingImpl) then) =
+      __$$ErrorOnSingleImageFecthingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ErrorOnSingleImageFecthingImplCopyWithImpl<$Res>
+    extends _$DogStateCopyWithImpl<$Res, _$ErrorOnSingleImageFecthingImpl>
+    implements _$$ErrorOnSingleImageFecthingImplCopyWith<$Res> {
+  __$$ErrorOnSingleImageFecthingImplCopyWithImpl(
+      _$ErrorOnSingleImageFecthingImpl _value,
+      $Res Function(_$ErrorOnSingleImageFecthingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ErrorOnSingleImageFecthingImpl implements _ErrorOnSingleImageFecthing {
+  const _$ErrorOnSingleImageFecthingImpl();
+
+  @override
+  String toString() {
+    return 'DogState.errorOnSingleImageFecthing()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ErrorOnSingleImageFecthingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() fecthed,
+    required TResult Function() error,
+    required TResult Function() imagesFecthing,
+    required TResult Function() imagesFecthed,
+    required TResult Function() errorOnImagesFecthing,
+    required TResult Function() singleImageFecthing,
+    required TResult Function(String imageUrl) singleImageFecthed,
+    required TResult Function() errorOnSingleImageFecthing,
+  }) {
+    return errorOnSingleImageFecthing();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? fecthed,
+    TResult? Function()? error,
+    TResult? Function()? imagesFecthing,
+    TResult? Function()? imagesFecthed,
+    TResult? Function()? errorOnImagesFecthing,
+    TResult? Function()? singleImageFecthing,
+    TResult? Function(String imageUrl)? singleImageFecthed,
+    TResult? Function()? errorOnSingleImageFecthing,
+  }) {
+    return errorOnSingleImageFecthing?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? fecthed,
+    TResult Function()? error,
+    TResult Function()? imagesFecthing,
+    TResult Function()? imagesFecthed,
+    TResult Function()? errorOnImagesFecthing,
+    TResult Function()? singleImageFecthing,
+    TResult Function(String imageUrl)? singleImageFecthed,
+    TResult Function()? errorOnSingleImageFecthing,
+    required TResult orElse(),
+  }) {
+    if (errorOnSingleImageFecthing != null) {
+      return errorOnSingleImageFecthing();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Fetched value) fecthed,
+    required TResult Function(_Error value) error,
+    required TResult Function(_ImagesFecthing value) imagesFecthing,
+    required TResult Function(_ImagesFecthed value) imagesFecthed,
+    required TResult Function(_ErrorOnImagesFecthing value)
+        errorOnImagesFecthing,
+    required TResult Function(_SingleImageFecthing value) singleImageFecthing,
+    required TResult Function(_SingleImageFecthed value) singleImageFecthed,
+    required TResult Function(_ErrorOnSingleImageFecthing value)
+        errorOnSingleImageFecthing,
+  }) {
+    return errorOnSingleImageFecthing(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Fetched value)? fecthed,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_ImagesFecthing value)? imagesFecthing,
+    TResult? Function(_ImagesFecthed value)? imagesFecthed,
+    TResult? Function(_ErrorOnImagesFecthing value)? errorOnImagesFecthing,
+    TResult? Function(_SingleImageFecthing value)? singleImageFecthing,
+    TResult? Function(_SingleImageFecthed value)? singleImageFecthed,
+    TResult? Function(_ErrorOnSingleImageFecthing value)?
+        errorOnSingleImageFecthing,
+  }) {
+    return errorOnSingleImageFecthing?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Fetched value)? fecthed,
+    TResult Function(_Error value)? error,
+    TResult Function(_ImagesFecthing value)? imagesFecthing,
+    TResult Function(_ImagesFecthed value)? imagesFecthed,
+    TResult Function(_ErrorOnImagesFecthing value)? errorOnImagesFecthing,
+    TResult Function(_SingleImageFecthing value)? singleImageFecthing,
+    TResult Function(_SingleImageFecthed value)? singleImageFecthed,
+    TResult Function(_ErrorOnSingleImageFecthing value)?
+        errorOnSingleImageFecthing,
+    required TResult orElse(),
+  }) {
+    if (errorOnSingleImageFecthing != null) {
+      return errorOnSingleImageFecthing(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ErrorOnSingleImageFecthing implements DogState {
+  const factory _ErrorOnSingleImageFecthing() =
+      _$ErrorOnSingleImageFecthingImpl;
 }

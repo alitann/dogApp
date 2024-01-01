@@ -12,13 +12,14 @@ class DogsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<DogBloc, DogState>(
       builder: (BuildContext context, DogState state) {
-        return state.when(
+        return state.maybeWhen(
           loading: () => const SplashPage(),
           error: () => const ErrorPage(),
           initial: () => const SplashPage(),
           fecthed: () => const SplashPage(),
-          imagesFecthed: () => const DogListPage(),
           errorOnImagesFecthing: () => const ErrorPage(),
+          errorOnSingleImageFecthing: () => const ErrorPage(),
+          orElse: () => const DogListPage(),
         );
       },
     );
