@@ -14,14 +14,7 @@ class DogDetailsPage extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          SizedBox(
-            width: double.infinity,
-            height: MediaQuery.of(context).size.width,
-            child: Image.file(
-              File('$localPath/$dogName.jpg'),
-              fit: BoxFit.cover,
-            ),
-          ),
+          _DogImage(localPath: localPath, dogName: dogName),
           const _TitleText(title: 'Breed'),
           const _Divider(),
           const _SubtitleText(title: 'Breed'),
@@ -29,34 +22,67 @@ class DogDetailsPage extends StatelessWidget {
           const _Divider(),
           const _SubtitleText(title: 'Sub Breed 1'),
           const _SubtitleText(title: 'Sub Breed 2'),
-          const SizedBox(height: 32),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
-            child: SizedBox(
-              height: 56,
-              width: double.infinity,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF0084FF),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-                onPressed: () {},
-                child: const Text(
-                  'Generate',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-            ),
-          ),
+          const SizedBox(height: 16),
+          const _GenerateButton(),
           const SizedBox(height: 16),
         ],
+      ),
+    );
+  }
+}
+
+class _DogImage extends StatelessWidget {
+  const _DogImage({
+    required this.localPath,
+    required this.dogName,
+  });
+
+  final String localPath;
+  final String dogName;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      height: MediaQuery.of(context).size.width - 32,
+      child: Image.file(
+        File('$localPath/$dogName.jpg'),
+        fit: BoxFit.cover,
+      ),
+    );
+  }
+}
+
+class _GenerateButton extends StatelessWidget {
+  const _GenerateButton();
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      child: SizedBox(
+        height: 56,
+        width: double.infinity,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: const Color(0xFF0084FF),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: const Text(
+            'Generate',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
       ),
     );
   }

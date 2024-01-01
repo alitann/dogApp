@@ -19,16 +19,21 @@ class DogListPage extends StatelessWidget {
   }) {
     return showDialog<void>(
       context: context,
+      barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
+          clipBehavior: Clip.antiAliasWithSaveLayer,
           insetPadding: const EdgeInsets.symmetric(horizontal: 16),
           contentPadding: EdgeInsets.zero,
           backgroundColor: Colors.white,
-          content: ClipRRect(
-            borderRadius: BorderRadius.circular(16),
-            child: DogDetailsPage(
-              dog: dog,
-              localPath: localPath,
+          content: SizedBox(
+            width: MediaQuery.of(context).size.width,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: DogDetailsPage(
+                dog: dog,
+                localPath: localPath,
+              ),
             ),
           ),
         );
