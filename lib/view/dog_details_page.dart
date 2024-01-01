@@ -24,57 +24,46 @@ class DogDetailsPage extends StatelessWidget {
       barrierDismissible: false,
       context: context,
       builder: (BuildContext ctx) {
-        return AlertDialog(
-          alignment: Alignment.center,
-          backgroundColor: Colors.transparent,
-          clipBehavior: Clip.antiAliasWithSaveLayer,
-          insetPadding: const EdgeInsets.symmetric(horizontal: 16),
-          contentPadding: EdgeInsets.zero,
-          content: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: CachedNetworkImage(
-                  imageUrl: imageUrl,
-                  width: 256,
-                  height: 256,
-                  imageBuilder: (context, imageProvider) => Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: imageProvider,
-                        fit: BoxFit.cover,
-                        colorFilter: const ColorFilter.mode(
-                          Colors.red,
-                          BlendMode.colorBurn,
-                        ),
-                      ),
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: CachedNetworkImage(
+                imageUrl: imageUrl,
+                width: 256,
+                height: 256,
+                imageBuilder: (context, imageProvider) => Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: imageProvider,
+                      fit: BoxFit.cover,
                     ),
                   ),
-                  placeholder: (context, url) =>
-                      const Center(child: CircularProgressIndicator()),
-                  errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
+                placeholder: (context, url) =>
+                    const Center(child: CircularProgressIndicator()),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
-              const SizedBox(height: 16),
-              GestureDetector(
-                onTap: Navigator.of(context).pop,
-                child: Container(
-                  width: 32,
-                  height: 32,
-                  padding: const EdgeInsets.all(8),
-                  clipBehavior: Clip.antiAlias,
-                  decoration: ShapeDecoration(
-                    color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(2),
-                    ),
+            ),
+            const SizedBox(height: 16),
+            GestureDetector(
+              onTap: Navigator.of(context).pop,
+              child: Container(
+                width: 32,
+                height: 32,
+                padding: const EdgeInsets.all(8),
+                clipBehavior: Clip.antiAlias,
+                decoration: ShapeDecoration(
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(2),
                   ),
-                  child: SvgPicture.asset(Assets.svg.close),
                 ),
+                child: SvgPicture.asset(Assets.svg.close),
               ),
-            ],
-          ),
+            ),
+          ],
         );
       },
     );
