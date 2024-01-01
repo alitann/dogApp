@@ -14,25 +14,30 @@ class DogListPage extends StatelessWidget {
 
   Future<void> showDetailsPage({
     required BuildContext context,
-    required List<Object?> dog,
+    required List<String?> subbreed,
+    required String breed,
     required String localPath,
   }) {
     return showDialog<void>(
       context: context,
       barrierDismissible: false,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          clipBehavior: Clip.antiAliasWithSaveLayer,
-          insetPadding: const EdgeInsets.symmetric(horizontal: 16),
-          contentPadding: EdgeInsets.zero,
-          backgroundColor: Colors.white,
-          content: SizedBox(
-            width: MediaQuery.of(context).size.width,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(16),
-              child: DogDetailsPage(
-                dog: dog,
-                localPath: localPath,
+      builder: (BuildContext ctx) {
+        return BlocProvider.value(
+          value: BlocProvider.of<DogBloc>(context),
+          child: AlertDialog(
+            clipBehavior: Clip.antiAliasWithSaveLayer,
+            insetPadding: const EdgeInsets.symmetric(horizontal: 16),
+            contentPadding: EdgeInsets.zero,
+            backgroundColor: Colors.white,
+            content: SizedBox(
+              width: MediaQuery.of(context).size.width,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: DogDetailsPage(
+                  breed: breed,
+                  subbreed: subbreed,
+                  localPath: localPath,
+                ),
               ),
             ),
           ),
@@ -76,7 +81,8 @@ class DogListPage extends StatelessWidget {
                 return GestureDetector(
                   onTap: () => showDetailsPage(
                     context: context,
-                    dog: dogList[index],
+                    breed: dog,
+                    subbreed: dogList[index][1]! as List<String?>,
                     localPath: path,
                   ),
                   child: _DogImage(

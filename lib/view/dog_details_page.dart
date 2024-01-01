@@ -1,27 +1,35 @@
 import 'dart:io';
 
+import 'package:dog_app/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
+import 'package:svg_flutter/svg_flutter.dart';
 
 class DogDetailsPage extends StatelessWidget {
-  const DogDetailsPage({required this.dog, required this.localPath, super.key});
+  const DogDetailsPage({
+    required this.localPath,
+    required this.subbreed,
+    required this.breed,
+    super.key,
+  });
 
-  final List<Object?> dog;
+  final List<String?> subbreed;
   final String localPath;
+  final String breed;
 
   @override
   Widget build(BuildContext context) {
-    final dogName = dog[0].toString();
     return SingleChildScrollView(
       child: Column(
         children: [
-          _DogImage(localPath: localPath, dogName: dogName),
+          _DogImage(localPath: localPath, dogName: breed),
           const _TitleText(title: 'Breed'),
           const _Divider(),
-          const _SubtitleText(title: 'Breed'),
-          const _TitleText(title: 'Sub Breed'),
-          const _Divider(),
-          const _SubtitleText(title: 'Sub Breed 1'),
-          const _SubtitleText(title: 'Sub Breed 2'),
+          _SubtitleText(title: breed),
+          if (subbreed.isNotEmpty) ...[
+            const _TitleText(title: 'Sub Breed'),
+            const _Divider(),
+            ...subbreed.map((e) => _SubtitleText(title: e!)),
+          ],
           const SizedBox(height: 16),
           const _GenerateButton(),
           const SizedBox(height: 16),
@@ -42,13 +50,28 @@ class _DogImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      height: MediaQuery.of(context).size.width - 32,
-      child: Image.file(
-        File('$localPath/$dogName.jpg'),
-        fit: BoxFit.cover,
-      ),
+    return Stack(
+      children: [
+        SizedBox(
+          width: double.infinity,
+          height: MediaQuery.of(context).size.width - 32,
+          child: Image.file(
+            File('$localPath/$dogName.jpg'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        Positioned(
+          top: 20,
+          right: 20,
+          child: GestureDetector(
+            onTap: Navigator.of(context).pop,
+            child: CircleAvatar(
+              backgroundColor: Colors.white,
+              child: SvgPicture.asset(Assets.svg.close),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -70,9 +93,7 @@ class _GenerateButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
             ),
           ),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
+          onPressed: () {},
           child: const Text(
             'Generate',
             textAlign: TextAlign.center,

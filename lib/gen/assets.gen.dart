@@ -25,6 +25,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/arrow_up_right.svg
   String get arrowUpRight => 'assets/svg/arrow_up_right.svg';
 
+  /// File path: assets/svg/close.svg
+  String get close => 'assets/svg/close.svg';
+
   /// File path: assets/svg/houseline.svg
   String get houseline => 'assets/svg/houseline.svg';
 
@@ -55,6 +58,7 @@ class $AssetsSvgGen {
   /// List of all assets
   List<String> get values => [
         arrowUpRight,
+        close,
         houseline,
         info,
         loading,
