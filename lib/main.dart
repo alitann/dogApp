@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:dog_app/dogs_scope.dart';
 import 'package:dog_app/navigation/router.dart';
+import 'package:dog_app/theme/theme.dart';
 import 'package:dog_app/view/utils/tracker.dart';
 import 'package:flutter/material.dart';
 
@@ -33,33 +34,7 @@ class MyApp extends StatelessWidget {
           routerConfig: router,
           title: 'Dog App Demo',
           debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(
-              seedColor: const Color(0XFFF2F2F7),
-            ),
-            inputDecorationTheme: InputDecorationTheme(
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-                borderSide: const BorderSide(color: Color(0XFFE5E5EA)),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-                borderSide: const BorderSide(color: Color(0XFFE5E5EA)),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-                borderSide: const BorderSide(color: Color(0XFFE5E5EA)),
-              ),
-            ),
-            bottomSheetTheme: BottomSheetThemeData(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
-              backgroundColor: Colors.transparent,
-            ),
-            fontFamily: 'Galano Grotesque',
-            useMaterial3: true,
-          ),
+          theme: DogTheme.themeData,
         ),
       ),
     );
