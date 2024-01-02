@@ -5,9 +5,7 @@ import 'package:dog_app/repository/models/dog_image.dart';
 import 'package:dog_app/repository/models/dogs.dart';
 import 'package:dog_app/repository/models/mapper.dart';
 import 'package:dog_app/service/client.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 
 class DogRepository {
@@ -52,22 +50,23 @@ class DogRepository {
     }
   }
 
-  Future<void> getDogImagesAndSave({required List<Dog> dogs}) async {
-    try {
-      for (final dog in dogs) {
-        final dogImageResult = await _dogClient.getDogImage(dogType: dog.breed);
-        final response = await http.get(Uri.parse(dogImageResult.message));
+  // Future<void> getDogImagesAndSave({required List<Dog> dogs}) async {
+  //   try {
+  //     for (final dog in dogs) {
+  //       final dogImageResult =
+  //await _dogClient.getDogImage(dogType: dog.breed);
+  //       final response = await http.get(Uri.parse(dogImageResult.message));
 
-        if (response.statusCode == 200) {
-          final localPath = '${localDirectory!.path}/$dog.jpg';
+  //       if (response.statusCode == 200) {
+  //         final localPath = '${localDirectory!.path}/$dog.jpg';
 
-          final file = File(localPath);
-          debugPrint(file.path);
-          await file.writeAsBytes(response.bodyBytes);
-        }
-      }
-    } catch (_) {
-      rethrow;
-    }
-  }
+  //         final file = File(localPath);
+  //         debugPrint(file.path);
+  //         await file.writeAsBytes(response.bodyBytes);
+  //       }
+  //     }
+  //   } catch (_) {
+  //     rethrow;
+  //   }
+  // }
 }

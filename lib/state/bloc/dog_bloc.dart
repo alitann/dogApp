@@ -19,6 +19,7 @@ class DogBloc extends Bloc<DogEvent, DogState> {
         dogType: event.dogType,
       );
     });
+    on<FetchImages>(_fecthedImages);
     add(const DogEvent.fetch());
   }
 
@@ -31,11 +32,17 @@ class DogBloc extends Bloc<DogEvent, DogState> {
       emit(const DogState.loading());
       _dogs = await _dogRepository.getDogs();
       emit(const DogState.fecthed());
-      await _dogRepository.getDogImagesAndSave(dogs: _dogs);
-      emit(const DogState.imagesFecthed());
+      // await _dogRepository.getDogImagesAndSave(dogs: _dogs);
+      // emit(const DogState.imagesFecthed());
     } catch (_) {
       emit(const DogState.error());
     }
+  }
+
+  Future<void> _fecthedImages(DogEvent event, Emitter<DogState> emit) async {
+    try {
+      emit(const DogState.imagesFecthed());
+    } catch (_) {}
   }
 
   Future<void> _getDogImage(

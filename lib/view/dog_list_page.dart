@@ -250,6 +250,7 @@ class _DogImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint(imagePath);
     return Stack(
       fit: StackFit.expand,
       children: [
