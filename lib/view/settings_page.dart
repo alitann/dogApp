@@ -1,20 +1,10 @@
 import 'package:dog_app/gen/assets.gen.dart';
-import 'package:dog_app/view/utils/page_slide_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:svg_flutter/svg_flutter.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
-
-  static void show({required BuildContext context}) {
-    Navigator.of(context).push(
-      SlideBottomtoTopRoute<void>(
-        child: const SettingsPage(),
-        pageName: 'settingsPage',
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
