@@ -14,103 +14,81 @@ class _SearchTextState extends State<SearchText> {
   final Duration _duration = _fixDuration;
 
   bool isActive = false;
-  bool isOpened = false;
   FocusNode focusNode = FocusNode();
 
   final TextEditingController _textEditingController = TextEditingController();
 
+  double newScale = 0;
+
   @override
   Widget build(BuildContext context) {
+    final maxLine = newScale ~/ 40 < 3 ? 3 : newScale ~/ 40;
+    debugPrint('maxline:$maxLine');
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         children: [
-          if (isOpened) ...[
-            AnimatedContainer(
-              color: Colors.white,
-              duration: _duration,
-              height: 600,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        isOpened = false;
-                        isActive = true;
-                      });
-                    },
-                    child: SizedBox(
-                      height: 10,
-                      child: Container(
-                        width: 32,
-                        height: 3,
-                        decoration: ShapeDecoration(
-                          color: const Color(0xFFE5E5EA),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(2),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  TextField(
-                    controller: _textEditingController,
-                    focusNode: focusNode,
-                    decoration: const InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(vertical: 200),
-                      hintText: 'Search',
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
           if (isActive) ...[
             AnimatedContainer(
               color: Colors.white,
               duration: _duration,
-              height: 200,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        isOpened = true;
-                        isActive = false;
-                      });
-                    },
-                    child: SizedBox(
-                      height: 10,
-                      child: Container(
-                        width: 32,
-                        height: 3,
-                        decoration: ShapeDecoration(
-                          color: const Color(0xFFE5E5EA),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(2),
+              height: newScale < 200 ? 200 : newScale,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
+                child: Column(
+                  children: [
+                    GestureDetector(
+                      onVerticalDragUpdate: (details) {
+                        newScale = details.globalPosition.dy;
+
+                        newScale =
+                            MediaQuery.of(context).size.height - 200 - newScale;
+
+                        setState(() {
+                          debugPrint('hegiht:$newScale');
+                        });
+                      },
+                      child: Column(
+                        children: [
+                          const SizedBox(height: 10),
+                          Container(
+                            width: 32,
+                            height: 3,
+                            decoration: ShapeDecoration(
+                              color: const Color(0xFFE5E5EA),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            ),
                           ),
+                          const SizedBox(height: 10),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: TextField(
+                        onChanged: widget.onChanged,
+                        controller: _textEditingController,
+                        maxLines: maxLine,
+                        focusNode: focusNode,
+                        decoration: const InputDecoration(
+                          hintText: 'Search',
+                          hintStyle: TextStyle(
+                            color: Color(0XFFE5E5EA),
+                          ),
+                        ),
+                        style: const TextStyle(
+                          color: Colors.black,
                         ),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 10),
-                  TextField(
-                    onChanged: widget.onChanged,
-                    controller: _textEditingController,
-                    maxLines: 3,
-                    focusNode: focusNode,
-                    decoration: const InputDecoration(
-                      hintText: 'Search',
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ],
-          if (!isActive && !isOpened) ...[
+          if (!isActive) ...[
             AnimatedContainer(
               color: Colors.white,
               duration: _duration,

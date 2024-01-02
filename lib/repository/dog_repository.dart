@@ -23,6 +23,8 @@ class DogRepository {
     try {
       final dogResponseResult = await _dogClient.getDogs();
 
+      localDirectory = await getApplicationDocumentsDirectory();
+
       return Mapper.mapToDogs(dogResponse: dogResponseResult);
     } catch (_) {
       rethrow;
@@ -45,9 +47,7 @@ class DogRepository {
         final response = await http.get(Uri.parse(dogImageResult.message));
 
         if (response.statusCode == 200) {
-          final appDocDir = await getApplicationDocumentsDirectory();
-          localDirectory = appDocDir;
-          final localPath = '${appDocDir.path}/$dog.jpg';
+          final localPath = '${localDirectory!.path}/$dog.jpg';
 
           final file = File(localPath);
           debugPrint(file.path);

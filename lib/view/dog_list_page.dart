@@ -5,10 +5,11 @@ import 'package:dog_app/repository/dog_repository.dart';
 import 'package:dog_app/repository/models/dogs.dart';
 import 'package:dog_app/state/bloc/dog_bloc.dart';
 import 'package:dog_app/view/dog_details_page.dart';
-import 'package:dog_app/view/settings_page.dart';
+
 import 'package:dog_app/view/widgets/search_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:svg_flutter/svg.dart';
 
 class DogListPage extends StatefulWidget {
@@ -142,7 +143,7 @@ class _DogListPageState extends State<DogListPage> {
                   ),
           ),
           Positioned(
-            bottom: 80,
+            bottom: 70,
             left: 0,
             right: 0,
             child: SearchText(
@@ -168,44 +169,41 @@ class _BottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(32),
-      child: CustomPaint(
-        painter: _TrapezoidPainter(),
-        child: SizedBox(
-          height: 100,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 32),
+    return CustomPaint(
+      painter: _TrapezoidPainter(),
+      child: SizedBox(
+        height: 100,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 32),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(Assets.svg.houseline),
+                  const Text('Home'),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 24,
+              child: VerticalDivider(thickness: 2),
+            ),
+            GestureDetector(
+              onTap: () => context.go('/settings'),
+              child: Padding(
+                padding: const EdgeInsets.only(right: 16),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SvgPicture.asset(Assets.svg.houseline),
-                    const Text('Home'),
+                    SvgPicture.asset(Assets.svg.settings),
+                    const Text('Settings'),
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 24,
-                child: VerticalDivider(thickness: 2),
-              ),
-              GestureDetector(
-                onTap: () => SettingsPage.show(context: context),
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 16),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SvgPicture.asset(Assets.svg.settings),
-                      const Text('Settings'),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -270,19 +268,23 @@ class _TrapezoidPainter extends CustomPainter {
       ..moveTo(0, size.height) // bottom-left corner
       ..lineTo(size.width, size.height) // bottom-right corner
       ..lineTo(
-        size.width * 0.95,
-        0,
-      ) // top-right corner (adjust the multiplier for shorter top side)
-      // ..arcToPoint(
-      //   Offset(size.width * 0.9, 0),
-      //   radius: const Radius.circular(4),
-      //   clockwise: false,
-      // ) // top-left corner with radius
-
+        size.width * 0.97,
+        size.height * 0.1,
+      )
+      ..arcToPoint(
+        Offset(size.width * 0.94, 0),
+        radius: const Radius.circular(12),
+        clockwise: false,
+      )
       ..lineTo(
-        size.width * 0.05,
+        size.width * 0.06,
         0,
-      ) // top-left corner (adjust the multiplier for shorter top side)
+      )
+      ..arcToPoint(
+        Offset(size.width * 0.03, size.height * 0.1),
+        radius: const Radius.circular(12),
+        clockwise: false,
+      )
       ..close(); // closes the path, creating a closed shape
 
     canvas.drawPath(path, paint);

@@ -1,6 +1,7 @@
 import 'package:dog_app/gen/assets.gen.dart';
 import 'package:dog_app/view/utils/page_slide_animation.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:svg_flutter/svg_flutter.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -21,16 +22,24 @@ class SettingsPage extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: GestureDetector(
-          onTap: Navigator.of(context).pop,
-          child: Container(
-            width: 32,
-            height: 4,
-            decoration: ShapeDecoration(
-              color: const Color(0xFFE5E5EA),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(2),
+          onTap: () {
+            context.pop();
+          },
+          child: Column(
+            children: [
+              const SizedBox(height: 10),
+              Container(
+                width: 32,
+                height: 4,
+                decoration: ShapeDecoration(
+                  color: const Color(0xFFE5E5EA),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
               ),
-            ),
+              const SizedBox(height: 10),
+            ],
           ),
         ),
       ),
