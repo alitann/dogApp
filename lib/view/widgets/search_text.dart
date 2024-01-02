@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class SearchText extends StatefulWidget {
-  const SearchText({super.key, this.onChanged});
+  const SearchText({required this.isActive, super.key, this.onChanged});
 
   final void Function(String)? onChanged;
+  final bool isActive;
 
   @override
   State<SearchText> createState() => _SearchTextState();
@@ -13,11 +14,7 @@ class _SearchTextState extends State<SearchText> {
   static const Duration _fixDuration = Duration(milliseconds: 500);
   final Duration _duration = _fixDuration;
 
-  bool isActive = false;
-  FocusNode focusNode = FocusNode();
-
   final TextEditingController _textEditingController = TextEditingController();
-
   double newScale = 0;
 
   @override
@@ -25,11 +22,26 @@ class _SearchTextState extends State<SearchText> {
     final maxLine = newScale ~/ 40 < 3 ? 3 : newScale ~/ 40;
     debugPrint('maxline:$maxLine');
 
+    final Widget textField = TextField(
+      onChanged: widget.onChanged,
+      controller: _textEditingController,
+      maxLines: maxLine,
+      decoration: const InputDecoration(
+        hintText: 'Search',
+        hintStyle: TextStyle(
+          color: Color(0XFFE5E5EA),
+        ),
+      ),
+      style: const TextStyle(
+        color: Colors.black,
+      ),
+    );
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         children: [
-          if (isActive) ...[
+          if (widget.isActive) ...[
             AnimatedContainer(
               color: Colors.white,
               duration: _duration,
@@ -66,45 +78,18 @@ class _SearchTextState extends State<SearchText> {
                         ],
                       ),
                     ),
-                    Expanded(
-                      child: TextField(
-                        onChanged: widget.onChanged,
-                        controller: _textEditingController,
-                        maxLines: maxLine,
-                        focusNode: focusNode,
-                        decoration: const InputDecoration(
-                          hintText: 'Search',
-                          hintStyle: TextStyle(
-                            color: Color(0XFFE5E5EA),
-                          ),
-                        ),
-                        style: const TextStyle(
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
+                    Expanded(child: textField),
                   ],
                 ),
               ),
             ),
           ],
-          if (!isActive) ...[
+          if (!widget.isActive) ...[
             AnimatedContainer(
               color: Colors.white,
               duration: _duration,
               height: 100,
-              child: TextField(
-                controller: _textEditingController,
-                focusNode: focusNode,
-                onTap: () {
-                  setState(() {
-                    isActive = true;
-                  });
-                },
-                decoration: const InputDecoration(
-                  hintText: 'Search',
-                ),
-              ),
+              child: Expanded(child: textField),
             ),
           ],
         ],

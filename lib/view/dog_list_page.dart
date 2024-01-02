@@ -20,9 +20,11 @@ class DogListPage extends StatefulWidget {
 }
 
 class _DogListPageState extends State<DogListPage> {
-  late String path;
+  late String _path;
+  bool _isTextFieldActive = false;
+  late List<Dog> _filteredDogList;
 
-  late List<Dog> filteredDogList;
+  final FocusNode _focusNode = FocusNode();
 
   Future<void> showDetailsPage({
     required BuildContext context,
@@ -58,107 +60,135 @@ class _DogListPageState extends State<DogListPage> {
 
   void _searchBreeds({required String text}) {
     setState(() {
-      filteredDogList = context.read<DogBloc>().dogs;
-      filteredDogList =
-          filteredDogList.where((dog) => dog.breed.contains(text)).toList();
+      _filteredDogList = context.read<DogBloc>().dogs;
+      _filteredDogList =
+          _filteredDogList.where((dog) => dog.breed.contains(text)).toList();
     });
   }
 
   @override
-  void initState() {
-    filteredDogList = context.read<DogBloc>().dogs;
-    path = context.read<DogRepository>().localDirectory!.path;
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
 
-    filteredDogList = filteredDogList;
+  @override
+  void initState() {
+    _filteredDogList = context.read<DogBloc>().dogs;
+    _path = context.read<DogRepository>().localDirectory!.path;
+
+    _filteredDogList = _filteredDogList;
+
+    _focusNode.addListener(() {
+      setState(() {
+        _isTextFieldActive = _focusNode.hasPrimaryFocus;
+      });
+    });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text(
-          'Dogs',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ),
-      body: Stack(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: filteredDogList.isNotEmpty
-                ? GridView.builder(
-                    itemCount: filteredDogList.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 16,
-                      mainAxisSpacing: 16,
-                    ),
-                    itemBuilder: (context, index) {
-                      final dog = filteredDogList[index];
-                      return GestureDetector(
-                        onTap: () => showDetailsPage(
-                          context: context,
-                          dog: dog,
-                          localPath: path,
-                        ),
-                        child: _DogImage(
-                          imagePath: '$path/${dog.breed}.jpg',
-                          dogName: dog.breed,
-                        ),
-                      );
-                    },
-                  )
-                : const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Center(
-                        child: Text(
-                          'No results found',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Center(
-                        child: Text(
-                          'Try searching with another word',
-                          style: TextStyle(
-                            color: Color(0x993C3C43),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-          ),
-          Positioned(
-            bottom: 70,
-            left: 0,
-            right: 0,
-            child: SearchText(
-              onChanged: (value) {
-                _searchBreeds(text: value);
-              },
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _isTextFieldActive = false;
+        });
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: const Text(
+            'Dogs',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
             ),
           ),
-          const Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: _BottomBar(),
-          ),
-        ],
+        ),
+        body: Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: _filteredDogList.isNotEmpty
+                  ? GridView.builder(
+                      itemCount: _filteredDogList.length,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 16,
+                        mainAxisSpacing: 16,
+                      ),
+                      itemBuilder: (context, index) {
+                        final dog = _filteredDogList[index];
+                        return GestureDetector(
+                          onTap: () => showDetailsPage(
+                            context: context,
+                            dog: dog,
+                            localPath: _path,
+                          ),
+                          child: _DogImage(
+                            imagePath: '$_path/${dog.breed}.jpg',
+                            dogName: dog.breed,
+                          ),
+                        );
+                      },
+                    )
+                  : const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Center(
+                          child: Text(
+                            'No results found',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        Center(
+                          child: Text(
+                            'Try searching with another word',
+                            style: TextStyle(
+                              color: Color(0x993C3C43),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+            ),
+            Positioned(
+              bottom: 70,
+              left: 0,
+              right: 0,
+              child: Focus(
+                focusNode: _focusNode,
+                onFocusChange: (focused) {
+                  setState(() {
+                    _isTextFieldActive = focused;
+                  });
+                },
+                child: SearchText(
+                  isActive: _isTextFieldActive,
+                  onChanged: (value) {
+                    _searchBreeds(text: value);
+                  },
+                ),
+              ),
+            ),
+            const Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: _BottomBar(),
+            ),
+          ],
+        ),
       ),
     );
   }
