@@ -6,6 +6,7 @@ import 'package:dog_app/repository/models/dogs.dart';
 import 'package:dog_app/repository/models/mapper.dart';
 import 'package:dog_app/service/client.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 
@@ -17,12 +18,24 @@ class DogRepository {
 
   final DogClient _dogClient;
   Directory? localDirectory;
+  String? osVersion;
+
+  Future<String> _getOsVersion() async {
+    try {
+      const platform = MethodChannel('com.example.app/osVersion');
+
+      return await platform.invokeMethod('getOsVersion') as String;
+    } on PlatformException catch (_) {
+      return 'Hata:';
+    }
+  }
 
   Future<List<Dog>> getDogs() async {
     try {
       final dogResponseResult = await _dogClient.getDogs();
 
       localDirectory = await getApplicationDocumentsDirectory();
+      osVersion = await _getOsVersion();
 
       return Mapper.mapToDogs(dogResponse: dogResponseResult);
     } catch (_) {

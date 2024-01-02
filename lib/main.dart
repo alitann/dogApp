@@ -21,21 +21,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        final currentFocus = FocusScope.of(context);
-
-        if (!currentFocus.hasPrimaryFocus) {
-          currentFocus.unfocus();
-        }
-      },
-      child: DogsScope(
-        child: MaterialApp.router(
-          routerConfig: router,
-          title: 'Dog App Demo',
-          debugShowCheckedModeBanner: false,
-          theme: DogTheme.themeData,
-        ),
+    return DogsScope(
+      child: MaterialApp.router(
+        routerConfig: router,
+        title: 'Dog App Demo',
+        debugShowCheckedModeBanner: false,
+        theme: DogTheme.themeData,
       ),
     );
   }

@@ -1,6 +1,6 @@
 import UIKit
 import Flutter
-
+import Foundation
 
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {
@@ -8,21 +8,21 @@ import Flutter
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
+    let controller = self.window?.rootViewController as! FlutterViewController
+    let channel = FlutterMethodChannel(name: "com.example.app/osVersion", binaryMessenger: controller.binaryMessenger)
+    channel.setMethodCallHandler { [weak self] (call: FlutterMethodCall, result: @escaping FlutterResult) in
+      self?.handleMethodCall(call, result: result)
+    }
     GeneratedPluginRegistrant.register(with: self)
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 
-      private func setupMethodChannel() {
-        let CHANNEL = "com.example.dogApp/os"
-        let controller : FlutterViewController = window?.rootViewController as! FlutterViewController
-        let methodChannel = FlutterMethodChannel(name: CHANNEL, binaryMessenger: controller.binaryMessenger)
-
-        methodChannel.setMethodCallHandler { (call: FlutterMethodCall, result: @escaping FlutterResult) in
-            if call.method == "getOsVersion" {
-                result("\(UIDevice.current.systemVersion)")
-            } else {
-                result(FlutterMethodNotImplemented)
-            }
-        }
+  private func handleMethodCall(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+    switch call.method {
+    case "getOsVersion":
+      result("iOS " + UIDevice.current.systemVersion)
+    default:
+      result(FlutterMethodNotImplemented)
     }
+  }
 }

@@ -1,5 +1,7 @@
 import 'package:dog_app/gen/assets.gen.dart';
+import 'package:dog_app/repository/dog_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:svg_flutter/svg_flutter.dart';
 
@@ -8,6 +10,7 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final osVersion = context.read<DogRepository>().osVersion;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -69,7 +72,7 @@ class SettingsPage extends StatelessWidget {
             _SettingMenuListTile(
               title: 'OS Version',
               leadingIconPath: Assets.svg.version,
-              trailingText: '17.0.3',
+              trailingText: osVersion,
             ),
           ],
         ),

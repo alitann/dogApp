@@ -1,10 +1,9 @@
-// class Dogs {
-//   Dogs({required this.dogTypes});
-//   Map<String, List<String>?> dogTypes;
-// }
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class Dog {
-  Dog({required this.breed, required this.subbreed});
-  final String breed;
-  final List<String?> subbreed;
+part 'dogs.freezed.dart';
+
+@freezed
+abstract class Dog with _$Dog {
+  const factory Dog({required String breed, required List<String?> subbreed}) =
+      _Dog;
 }
