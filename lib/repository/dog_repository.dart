@@ -6,7 +6,6 @@ import 'package:dog_app/repository/models/dogs.dart';
 import 'package:dog_app/repository/models/mapper.dart';
 import 'package:dog_app/service/client.dart';
 import 'package:flutter/material.dart';
-// import 'package:dog_app/service/models/dog_image.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 
