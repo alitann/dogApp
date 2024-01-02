@@ -19,7 +19,11 @@ class _SearchTextState extends State<SearchText> {
 
   @override
   Widget build(BuildContext context) {
-    final maxLine = newScale ~/ 40 < 3 ? 3 : newScale ~/ 40;
+    final maxLine = !widget.isActive
+        ? 1
+        : newScale ~/ 40 < 3
+            ? 3
+            : newScale ~/ 40;
     debugPrint('maxline:$maxLine');
 
     final Widget textField = TextField(
@@ -89,7 +93,23 @@ class _SearchTextState extends State<SearchText> {
               color: Colors.white,
               duration: _duration,
               height: 100,
-              child: Expanded(child: textField),
+              child: Column(
+                children: [
+                  const SizedBox(height: 4),
+                  Container(
+                    width: 32,
+                    height: 3,
+                    decoration: ShapeDecoration(
+                      color: const Color(0xFFE5E5EA),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(2),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Expanded(child: textField),
+                ],
+              ),
             ),
           ],
         ],
