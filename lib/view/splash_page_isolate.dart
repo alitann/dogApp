@@ -52,7 +52,6 @@ class _SplashPageIsolateState extends State<SplashPageIsolate> {
           debugPrint(imageCount.toString());
         }
       }
-      Isolate.current.kill();
     } catch (_) {
       rethrow;
     }
@@ -77,8 +76,9 @@ class _SplashPageIsolateState extends State<SplashPageIsolate> {
         message.send(null);
       } else if (message is String) {
         // İsteğin tamamlanmasıyla ilgili bilgiyi al ve işlemleri gerçekleştir
-        getDogImagesAndSave(_dogs, _localDirectoryPath);
+        // getDogImagesAndSave(_dogs, _localDirectoryPath);
         _bloc.add(const DogEvent.fetchImages());
+        // Isolate.current.kill();
       }
     });
   }

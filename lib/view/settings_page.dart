@@ -11,34 +11,36 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final osVersion = context.read<DogRepository>().osVersion;
+    var newScale = 0.0;
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: GestureDetector(
-          onTap: () {
-            context.pop();
-          },
-          child: Column(
-            children: [
-              const SizedBox(height: 10),
-              Container(
-                width: 32,
-                height: 4,
-                decoration: ShapeDecoration(
-                  color: const Color(0xFFE5E5EA),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(2),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 10),
-            ],
-          ),
-        ),
-      ),
       body: SafeArea(
         child: Column(
           children: [
+            GestureDetector(
+              onVerticalDragUpdate: (details) {
+                if (newScale < details.localPosition.dy) {
+                  context.pop();
+                }
+                newScale = details.localPosition.dy;
+                debugPrint(newScale.toString());
+              },
+              child: Column(
+                children: [
+                  const SizedBox(height: 10),
+                  Container(
+                    width: 32,
+                    height: 4,
+                    decoration: ShapeDecoration(
+                      color: const Color(0xFFE5E5EA),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(2),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                ],
+              ),
+            ),
             _SettingMenuListTile(
               title: 'Help',
               leadingIconPath: Assets.svg.info,
