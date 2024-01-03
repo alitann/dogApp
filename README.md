@@ -17,5 +17,5 @@ Application
 
 - Refactor search_text
 - Refactor isolate(move to repository and remove the isolate_splash_page)
-  - Isolate.spawn ile ilgili hatalar sebebi ile geçici bir çözüm olarak isolate_splash_page eklenmiştir. Refactor edilip repository katmanına taşınmalı.
+  - Isolate_splash_page has been added as a temporary solution due to errors related to Isolate.spawn. It should be refactored and moved to the repository layer.
 - Refactor navigator for all pop up and pages.
