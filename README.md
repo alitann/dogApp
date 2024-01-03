@@ -1,16 +1,18 @@
-# dog_app
+# Dog App
 
-A new Flutter project.
+This is a dog application which was implemented by using https://dog.ceo/dog-api/ API. 
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Application 
+-  uses bloc state management.
+-  uses isolate to get all images related to all dogs.
+-  uses go_router for navigator.
+-  has a filter by using dog names.
+-  uses a custom-painted nav bar.
+-  uses retrofit and dio for HTTP calls
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## TODO
+- Refactor search_text
+- Refactor isolate(move to repository and remove the splash_isolate_pate)
+- Refactor navigator for all pop up and pages. 
