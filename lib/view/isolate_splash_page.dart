@@ -10,14 +10,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 
-class SplashPageIsolate extends StatefulWidget {
-  const SplashPageIsolate({super.key});
+class IsolateSplashPage extends StatefulWidget {
+  const IsolateSplashPage({super.key});
 
   @override
-  State<SplashPageIsolate> createState() => _SplashPageIsolateState();
+  State<IsolateSplashPage> createState() => _IsolateSplashPageState();
 }
 
-class _SplashPageIsolateState extends State<SplashPageIsolate> {
+class _IsolateSplashPageState extends State<IsolateSplashPage> {
   late List<Dog> _dogs;
   late String _localDirectoryPath;
   late DogBloc _bloc;
