@@ -162,7 +162,7 @@ class _DogListPageState extends State<DogListPage> {
                     ),
             ),
             Positioned(
-              bottom: 80,
+              bottom: 90,
               left: 0,
               right: 0,
               child: Focus(
